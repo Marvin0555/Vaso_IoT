@@ -4,7 +4,7 @@ import QtQuick.Layouts
 import QtQuick.Window 
 
 ApplicationWindow {
-    id:dados
+    id:luminosity_d
     visible : true
     width: 1200
     height: 800
@@ -12,19 +12,22 @@ ApplicationWindow {
 
     Text {
         anchors.centerIn: parent
-        text: qsTr("Hello World.")
+        font.pixelSize: 60
+        text: qsTr("Hello luminosity.")
     }
     Button{
         text: "Voltar"
         onClicked: {
-            tt.visible = true
-            dados.visible = false
+            //tt.visible = true
+            luminosity_d.close()
+            //onClosing : dd.source = "Tela_inicial.qml"
             //dd.source = "Tela_inicial.qml"
+            tt.visible = true
             
         }
     }
-    Loader{
+/*     Loader{
         id:dd
-    }
+    } */
 
 }

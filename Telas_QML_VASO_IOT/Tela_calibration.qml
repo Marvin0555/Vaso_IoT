@@ -3,8 +3,8 @@ import QtQuick.Controls.Material
 import QtQuick.Layouts
 import QtQuick.Window 
 
-ApplicationWindow{
-    id:tt
+ApplicationWindow {
+    id:calibration_d
     visible : true
     width: 1200
     height: 800
@@ -75,62 +75,24 @@ ApplicationWindow{
         }   
     }
 
-    Row{
+    Text {
         anchors.centerIn: parent
-        spacing: 40
-        Button{
-            text: 'Feliz!'
-            width: 150
-            anchors{
-                top: parent.top
-                topMargin: 150
-            }            
-            onClicked:{
-                animation.source =''
-                animation.source = "image/greens-swag.gif"
-            }
-        }
-
-        Button{
-            text: 'Mais ou menos'
-            width: 150
-            anchors{
-                top: parent.top
-                topMargin: 150
-            }            
-            onClicked:{
-                animation.source = ''
-                animation.source= "image/cute-plants.gif"
-            }
-        }
-        Button{
-            id: bff
-            text: 'Triste!'
-            width: 150
-            anchors{
-                top: parent.top
-                topMargin: 150
-            }            
-            onClicked:{
-                animation.source = ''
-                animation.source = "image/emo-cute-emo.gif"
-            }
+        font.pixelSize: 60
+        text: qsTr("Hello calibration.")
+    }
+    Button{
+        text: "Voltar"
+        onClicked: {
+            //tt.visible = true
+            calibration_d.close()
+            //onClosing : dd.source = "Tela_inicial.qml"
+            //dd.source = "Tela_inicial.qml"
+            tt.visible = true
+            
         }
     }
-
-    Rectangle {
-        id: reet
-        anchors.centerIn: parent
-        width: animation.widthvisible = false
-        AnimatedImage {
-            width: 200
-            height:200
-            id: animation
-        }   
-    }
-    Loader{
-        id: ld
-    }
+/*     Loader{
+        id:dd
+    } */
 
 }
-
