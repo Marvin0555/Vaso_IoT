@@ -3,7 +3,8 @@ import QtQuick.Controls.Material
 import QtQuick.Layouts
 import QtQuick.Window 
 
-Image {
+
+Item {
     id:luminosity_d
     visible : true
     width: 1200

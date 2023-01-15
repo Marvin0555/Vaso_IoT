@@ -9,7 +9,8 @@ ApplicationWindow{
     width: 1200
     height: 800
     Material.theme: 'Dark'
-    TabBar {
+    title: qsTr("Hello pri")
+    header: TabBar {
         id: bar
         width: parent.width
         TabButton {
@@ -17,9 +18,10 @@ ApplicationWindow{
             icon.source: "image/potted-plant.svg"
             font.pixelSize: 20  
             text: qsTr("Home")
-/*             onClicked:{
-                stackView.push("Tela_inicial.qml")
-            } */
+            onClicked:{
+                /* stackView.push("Tela_inicial.qml") */
+                load_pages('Page inicial')
+            } 
         }
         TabButton {
             icon.color: "transparent"
@@ -27,7 +29,8 @@ ApplicationWindow{
             font.pixelSize: 20
             text: qsTr("Status")
              onClicked:{
-                stackView.push("Tela_status.qml")
+                load_pages('Page status')
+                /* stackView.push("Tela_status.qml") */
             } 
         }
         TabButton {
@@ -36,7 +39,7 @@ ApplicationWindow{
             font.pixelSize: 20
             text: qsTr("Evolution")
              onClicked:{
-                stackView.push("Tela_evolution.qml")
+                load_pages('Page evolution')
             } 
         }
         TabButton {
@@ -45,7 +48,7 @@ ApplicationWindow{
             font.pixelSize: 20
             text: qsTr("Luminosity")
            onClicked:{
-                stackView.push("Tela_luminosity.qml")
+                load_pages('Page luminosity')
             } 
         }
         TabButton {
@@ -53,82 +56,74 @@ ApplicationWindow{
             icon.source: "image/dialog-information.svg"
             font.pixelSize: 20
             text: qsTr("calibration")
-/*             onClicked:{
-                stackView.push("Tela_calibration.qml")
-            } */
+            onClicked:{
+               load_pages('Page calibration')
+            } 
         }
-    }
-    Rectangle {
-        id: reet
-        anchors {
-        verticalCenter: parent.verticalCenter
-            left: parent.left
-            top: parent.top
-            topMargin: 300
-            leftMargin: 500
-        }
-        width: animation.widthvisible = false
-        AnimatedImage {
-            width: 200
-            height:200
-            id: animation
-        }   
     }
 
-    Row{
-        anchors.verticalCenter: parent.verticalCenter   
-        anchors.horizontalCenter: parent.horizontalCenter
-        spacing: 40
-        Button{
-            text: 'Feliz!'
-            width: 150
-            anchors{
-                top: parent.top
-                topMargin: 150
-            }            
-            onClicked:{
-                animation.source =''
-                animation.source = "image/greens-swag.gif"
-            }
-        }
-
-        Button{
-            text: 'Mais ou menos'
-            width: 150
-            anchors{
-                top: parent.top
-                topMargin: 150
-            }            
-            onClicked:{
-                animation.source = ''
-                animation.source= "image/cute-plants.gif"
-            }
-        }
-        Button{
-            id: bff
-            text: 'Triste!'
-            width: 150
-            anchors{
-                top: parent.top
-                topMargin: 150
-            }            
-            onClicked:{
-                animation.source = ''
-                animation.source = "image/emo-cute-emo.gif"
-            }
-        }
-    }
-    
     StackView {
         id: stackView
-        anchors.fill: parent
-        replaceEnter: Transition {
+        anchors{
+            left: parent.left
+            right: parent.left
+            bottom: parent.bottom
+            top: header.bottom  
+        }
+        initialItem : tela_inicial
+
+    Component{
+        id: tela_inicial
+        Tela_inicial2{}
+    }
+    Component{
+        id: tela_status
+        Tela_status{}
+    }
+    Component{
+        id: tela_evolution
+        Tela_evolution{}
+    }
+    Component{
+        id: tela_calibration
+        Tela_calibration{}
+    }
+    Component{
+        id: tela_luminosity
+        Tela_luminosity{}
+    }
+
+
+
+
+/*         replaceEnter: Transition {
             NumberAnimation { property: "opacity"; to: 1.0; duration: 500 }
         }
         replaceExit: Transition {
             NumberAnimation { property: "opacity"; to: 0.0; duration: 500 }
-        }
+        } */
     }
+
+function load_pages(page)
+{
+    switch (page){
+        case 'Page inicial':
+            stackView.push(tela_inicial);
+            break;
+        case 'Page status':
+            stackView.push(tela_status);
+            break;
+        case 'Page evolution':
+            stackView.push(tela_evolution);
+            break;
+        case 'Page luminosity':
+            stackView.push(tela_luminosity);
+            break;
+        case 'Page calibration':
+            stackView.push(tela_calibration);
+            break;
+    }
+}
 
     
 

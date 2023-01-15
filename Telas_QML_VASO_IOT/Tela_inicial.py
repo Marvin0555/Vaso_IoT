@@ -4,6 +4,6 @@ from PySide6.QtCore import QObject
 
 app = QGuiApplication()
 engine = QQmlApplicationEngine()
-engine.load('Tela_inicial.qml')
+engine.load('Tela_conf.qml')
 
 app.exec()
