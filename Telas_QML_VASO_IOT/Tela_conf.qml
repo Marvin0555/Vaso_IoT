@@ -3,8 +3,7 @@ import QtQuick.Controls.Material
 import QtQuick.Layouts
 import QtQuick.Window 
 
-ApplicationWindow{
-    id:tt
+ApplicationWindow {
     visible : true
     width: 1200
     height: 800
@@ -20,7 +19,7 @@ ApplicationWindow{
             text: qsTr("Home")
             onClicked:{
                 /* stackView.push("Tela_inicial.qml") */
-                load_pages('Page inicial')
+                load_page(text)
             } 
         }
         TabButton {
@@ -29,7 +28,7 @@ ApplicationWindow{
             font.pixelSize: 20
             text: qsTr("Status")
              onClicked:{
-                load_pages('Page status')
+                load_page(text)
                 /* stackView.push("Tela_status.qml") */
             } 
         }
@@ -39,7 +38,7 @@ ApplicationWindow{
             font.pixelSize: 20
             text: qsTr("Evolution")
              onClicked:{
-                load_pages('Page evolution')
+                load_page(text)
             } 
         }
         TabButton {
@@ -48,122 +47,70 @@ ApplicationWindow{
             font.pixelSize: 20
             text: qsTr("Luminosity")
            onClicked:{
-                load_pages('Page luminosity')
+                load_page(text)
             } 
         }
         TabButton {
             icon.color: "transparent"
             icon.source: "image/dialog-information.svg"
             font.pixelSize: 20
-            text: qsTr("calibration")
+            text: qsTr("Calibration")
             onClicked:{
-               load_pages('Page calibration')
+               load_page(text)
             } 
         }
     }
 
     StackView {
-        id: stackView
-        anchors{
+        anchors {
             left: parent.left
-            right: parent.left
+            right: parent.right
             bottom: parent.bottom
-            top: header.bottom  
+            top: header.bottom
         }
-        initialItem : tela_inicial
 
-    Component{
-        id: tela_inicial
+        id: mystackview
+        initialItem: home_page
+    }
+
+    Component {
+        id: home_page
         Tela_inicial2{}
     }
-    Component{
-        id: tela_status
+    Component {
+        id: status_page
         Tela_status{}
     }
-    Component{
-        id: tela_evolution
+    Component {
+        id: evolution_page
         Tela_evolution{}
     }
-    Component{
-        id: tela_calibration
-        Tela_calibration{}
-    }
-    Component{
-        id: tela_luminosity
+    Component {
+        id: luminosity_page
         Tela_luminosity{}
     }
-
-
-
-
-/*         replaceEnter: Transition {
-            NumberAnimation { property: "opacity"; to: 1.0; duration: 500 }
-        }
-        replaceExit: Transition {
-            NumberAnimation { property: "opacity"; to: 0.0; duration: 500 }
-        } */
+    Component {
+        id: calibration_page
+        Tela_calibration{}
     }
 
-function load_pages(page)
-{
-    switch (page){
-        case 'Page inicial':
-            stackView.push(tela_inicial);
+    function load_page(page) {
+        switch (page) {
+        case 'Home':
+            mystackview.push(home_page);
             break;
-        case 'Page status':
-            stackView.push(tela_status);
+        case 'Status':
+            mystackview.push(status_page);
             break;
-        case 'Page evolution':
-            stackView.push(tela_evolution);
+        case 'Evolution':
+            mystackview.push(evolution_page);
             break;
-        case 'Page luminosity':
-            stackView.push(tela_luminosity);
+        case 'Luminosity':
+            mystackview.push(luminosity_page);
             break;
-        case 'Page calibration':
-            stackView.push(tela_calibration);
+        case 'Calibration':
+            mystackview.push(calibration_page);
             break;
+        }
     }
 }
-
-    
-
-/*     StackLayout {
-        width: parent.width
-        currentIndex: bar.currentIndex
-        anchors.centerIn: parent
-        Item {
-            id: homeTab
-
-        }
-        Item {
-            id:status_d
-            Text {
-                font.pixelSize: 60
-                text: qsTr("Hello status.")
-            }
-        }
-        Item {
-            id:evolution_d
-            Text {
-                font.pixelSize: 60
-                text: qsTr("Hello evolution.")
-            }
-        }
-        Item {
-            id:luminosity_d
-            Text {
-                font.pixelSize: 60
-                text: qsTr("Hello luminosity.")
-            }
-        }
-        Item {
-            id:calibration_d
-            Text {
-                font.pixelSize: 60
-                text: qsTr("Hello calibration.")
-            }
-        }
-    } */
-
-}
-

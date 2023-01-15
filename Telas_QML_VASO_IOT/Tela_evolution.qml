@@ -4,16 +4,16 @@ import QtQuick.Layouts
 import QtQuick.Window 
 
 Image {
-    id:evolution_d
-
-    Text {
-        anchors.centerIn: parent
-        font.pixelSize: 60
-        text: qsTr("Hello evolution.")
+    Rectangle {
+        anchors.fill: parent
+        color: 'red'
+        Button {
+            anchors.centerIn: parent
+            text: 'Exit'
+            onClicked: {
+                Qt.quit();
+            }
+        }
     }
-
-/*     Loader{
-        id:dd
-    } */
 
 }

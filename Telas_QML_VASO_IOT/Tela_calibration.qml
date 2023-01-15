@@ -9,8 +9,6 @@ Item {
     width: 1200
     height: 800
     Material.theme: 'Dark'
-
-
     Text {
         anchors.centerIn: parent
         font.pixelSize: 60
