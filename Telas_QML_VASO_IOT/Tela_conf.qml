@@ -27,7 +27,7 @@ ApplicationWindow {
             icon.source: "image/dialog-information.svg"
             font.pixelSize: 20
             text: qsTr("Status")
-             onClicked:{
+            onClicked:{
                 load_page(text)
                 /* stackView.push("Tela_status.qml") */
             } 
@@ -37,7 +37,7 @@ ApplicationWindow {
             icon.source: "image/evolution-tasks.svg"
             font.pixelSize: 20
             text: qsTr("Evolution")
-             onClicked:{
+            onClicked:{
                 load_page(text)
             } 
         }
@@ -46,7 +46,7 @@ ApplicationWindow {
             icon.source: "image/sun.svg"
             font.pixelSize: 20
             text: qsTr("Luminosity")
-           onClicked:{
+            onClicked:{
                 load_page(text)
             } 
         }
