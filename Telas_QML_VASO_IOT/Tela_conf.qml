@@ -18,6 +18,8 @@ ApplicationWindow {
             font.pixelSize: 20  
             text: qsTr("Home")
             onClicked:{
+/*                 var fetch_return = ponte.fetch_image('nada')
+                eee.text = fetch_return */
                 /* stackView.push("Tela_inicial.qml") */
                 load_page(text)
             } 

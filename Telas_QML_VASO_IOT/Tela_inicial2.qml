@@ -4,9 +4,12 @@ import QtQuick.Layouts
 import QtQuick.Window 
 
 Item {
-   Rectangle {
-        id: dd
-        color: 'green'
+    
+    property var fetch_return : ponte.fetch_image('nada')
+
+    Rectangle {
+        id: inic
+        color: fetch_return[1]
         anchors.fill: parent
 /*         anchors {
             verticalCenter: parent.verticalCenter
@@ -17,24 +20,47 @@ Item {
         } */
        /*  width: animation.widthvisible = false */
         AnimatedImage {
+            width: 200
+            height: 200
+            id: animation
+            source : fetch_return[2]
             anchors{
                 left: parent.left
                 top: parent.top
                 topMargin: 300
                 leftMargin: 500
             }
-            width: 200
-            height: 200
-            id: animation
-            source : "image/greens-swag.gif"
+            Text{
+                id : estado
+                color: "white"
+                font.pointSize: 30
+                text: fetch_return[0]
+                anchors{
+                    left: parent.left
+                    top: parent.top
+                    topMargin: 240
+                    leftMargin: 70
+                }
+            }
         }
+/*         Button{ 
+            text: 'Atualizar!'
+            width: 150
+            onClicked:{
+                var fetch_return = ponte.fetch_image('nada')
+             if( fetch_return == "1"){
+                    estado.text = "Feliz"
+                }
+
+            }
+        } */
+        
 /*         Rectangle {
             property int frames: animation.frameCount
             width: 4; height: 8
             color: "red"
         } */
     }
-
 }
 
 /* 
