@@ -5,6 +5,40 @@ import QtQuick.Window
 
 Item {
    Rectangle {
+        id: dd
+        color: 'green'
+        anchors.fill: parent
+/*         anchors {
+            verticalCenter: parent.verticalCenter
+            left: parent.left
+            top: parent.top
+            topMargin: 300
+            leftMargin: 500
+        } */
+       /*  width: animation.widthvisible = false */
+        AnimatedImage {
+            anchors{
+                left: parent.left
+                top: parent.top
+                topMargin: 300
+                leftMargin: 500
+            }
+            width: 200
+            height: 200
+            id: animation
+            source : "image/greens-swag.gif"
+        }
+/*         Rectangle {
+            property int frames: animation.frameCount
+            width: 4; height: 8
+            color: "red"
+        } */
+    }
+
+}
+
+/* 
+   Rectangle {
         id: reet
         anchors {
         verticalCenter: parent.verticalCenter
@@ -61,48 +95,6 @@ Item {
             onClicked:{
                 animation.source = ''
                 animation.source = "image/emo-cute-emo.gif"
-            }
-        }
-    }
-}
-
-
-/*     RowLayout {
-        anchors.centerIn: parent
-        width: parent.width
-        Button {
-            text: 'Home'
-            Layout.fillWidth: true
-            onClicked: {
-                load_page(text);
-            }
-        }
-        Button {
-            text: 'Status'
-            Layout.fillWidth: true
-            onClicked: {
-                load_page(text);
-            }
-        }
-        Button {
-            text: 'Evolution'
-            Layout.fillWidth: true
-            onClicked: {
-                load_page(text);
-            }
-        }
-        Button {
-            text: 'Luminosity'
-            Layout.fillWidth: true
-            onClicked: {
-                load_page(text);
-            }
-        }
-        Button {
-            text: 'Calibration'
-            Layout.fillWidth: true
-            onClicked: {
-                load_page(text);
             }
         }
     } */
